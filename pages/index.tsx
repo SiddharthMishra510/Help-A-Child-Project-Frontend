@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Box, Typography, Card, CardContent } from "@mui/material";
 import Carousel from "../components/Carousel";
 
-// Define the Child interface
 export interface Child {
     id: number;
     name: string;
@@ -13,7 +12,7 @@ export default function App() {
     const [error, setError] = useState("");
 
     useEffect(() => {
-        fetch("http://localhost:3000/children")
+        fetch(`http://localhost:3000/children`)
             .then((res): Promise<Child[]> => {
                 if (!res.ok) throw new Error("Failed to fetch children");
                 return res.json();
@@ -37,7 +36,6 @@ export default function App() {
                 Children Carousel
             </Typography>
 
-            {/* Use the Carousel component */}
             <Carousel>
                 {children.map((child) => (
                     <Card key={child.id} sx={{ minWidth: 275, textAlign: "center", p: 2 }}>
