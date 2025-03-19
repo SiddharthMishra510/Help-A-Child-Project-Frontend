@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Box, Typography, Card, CardContent } from "@mui/material";
+import Carousel from "../components/Carousel";
 
 // Define the Child interface
 export interface Child {
@@ -6,8 +8,8 @@ export interface Child {
     name: string;
 }
 
-export default function ChildProfile() {
-    const [child, setChild] = useState<Child | null>(null);
+export default function App() {
+    const [children, setChildren] = useState<Child[]>([]);
     const [error, setError] = useState("");
 
     useEffect(() => {
@@ -16,9 +18,9 @@ export default function ChildProfile() {
                 if (!res.ok) throw new Error("Failed to fetch children");
                 return res.json();
             })
-            .then((children: Child[]) => {
-                if (children.length > 0) {
-                    setChild(children[0]);
+            .then((data: Child[]) => {
+                if (data.length > 0) {
+                    setChildren(data);
                 } else {
                     setError("No children found.");
                 }
@@ -27,16 +29,25 @@ export default function ChildProfile() {
     }, []);
 
     if (error) return <p>Error: {error}</p>;
-    if (!child) return <p>Loading...</p>;
+    if (children.length === 0) return <p>Loading...</p>;
 
     return (
-        <div>
-            <h1>{child.name}</h1>
+        <Box sx={{ textAlign: "center", mt: 4 }}>
+            <Typography variant="h4" gutterBottom>
+                Children Carousel
+            </Typography>
 
-            <h2>Messages</h2>
-            <ul>
-                <li>{child.id}</li>  {/* ✅ Fix: Wrap id in <li> */}
-            </ul>
-        </div>
+            {/* Use the Carousel component */}
+            <Carousel>
+                {children.map((child) => (
+                    <Card key={child.id} sx={{ minWidth: 275, textAlign: "center", p: 2 }}>
+                        <CardContent>
+                            <Typography variant="h5">{child.name}</Typography>
+                            <Typography variant="body2">ID: {child.id}</Typography>
+                        </CardContent>
+                    </Card>
+                ))}
+            </Carousel>
+        </Box>
     );
 }
