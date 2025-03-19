@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Box, Typography, Card, CardContent } from "@mui/material";
+import Link from "next/link";
+import { Box, Typography, Card, CardContent, Button } from "@mui/material";
 import Carousel from "../components/Carousel";
-import {Child} from "../types/child";
+import { Child } from "../types/child";
 
 export default function Home() {
     const [children, setChildren] = useState<Child[]>([]);
@@ -31,6 +32,12 @@ export default function Home() {
             <Typography variant="h4" gutterBottom>
                 Children Carousel
             </Typography>
+
+            <Link href="/add-child">
+                <Button variant="contained" color="primary" sx={{ mb: 2 }}>
+                    Add Child
+                </Button>
+            </Link>
 
             <Carousel>
                 {children.map((child) => (
