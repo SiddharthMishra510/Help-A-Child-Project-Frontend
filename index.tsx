@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { Box, Typography, Card, CardContent } from "@mui/material";
-import Carousel from "../components/Carousel";
-
-export interface Child {
-    id: number;
-    name: string;
-}
+import Carousel from "./components/Carousel";
+import {Child} from "./types/child";
 
 export default function App() {
     const [children, setChildren] = useState<Child[]>([]);
