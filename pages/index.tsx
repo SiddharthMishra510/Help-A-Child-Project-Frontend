@@ -30,7 +30,7 @@ export default function Home() {
     return (
         <Box sx={{ textAlign: "center", mt: 4 }}>
             <Typography variant="h4" gutterBottom>
-                Children Carousel
+                Donate To Your Star ⭐ Child
             </Typography>
 
             <Link href="/add-child">
