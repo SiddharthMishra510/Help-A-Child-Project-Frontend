@@ -2,16 +2,14 @@ import React, { useState } from "react";
 import { Box, TextField, Button, Typography } from "@mui/material";
 
 const AddChild = () => {
-    // State for form inputs
     const [id, setId] = useState("");
     const [name, setName] = useState("");
     const [message, setMessage] = useState("");
+    const [error, setError] = useState("");
 
-    // Function to handle form submission
     const handleSubmit = async (event: React.FormEvent) => {
-        event.preventDefault(); // Prevents page reload
+        event.preventDefault();
 
-        // Construct child object
         const newChild = { id: Number(id), name };
 
         try {
@@ -21,13 +19,21 @@ const AddChild = () => {
                 body: JSON.stringify(newChild),
             });
 
-            if (!response.ok) throw new Error("Failed to add child");
+            const data = await response.json();
+
+            if (!response.ok) {
+                setError(data.message || "Failed to add child");
+                setMessage("");
+                return;
+            }
 
             setMessage(`Child "${name}" added successfully!`);
-            setId(""); // Reset input field
+            setError("");
+            setId("");
             setName("");
-        } catch (error) {
-            setMessage("Error adding child. Please try again.");
+        } catch (err: any) {
+            setError(err.message);
+            setMessage("");
         }
     };
 
@@ -58,7 +64,8 @@ const AddChild = () => {
                 </Button>
             </form>
 
-            {message && <Typography sx={{ mt: 2 }}>{message}</Typography>}
+            {message && <Typography sx={{ mt: 2, color: "green" }}>{message}</Typography>}
+            {error && <Typography sx={{ mt: 2, color: "red" }}>{error}</Typography>}
         </Box>
     );
 };
