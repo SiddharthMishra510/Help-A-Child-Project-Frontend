@@ -3,7 +3,7 @@ import { Box, Typography, Card, CardContent } from "@mui/material";
 import Carousel from "../components/Carousel";
 import {Child} from "../types/child";
 
-export default function App() {
+export default function Home() {
     const [children, setChildren] = useState<Child[]>([]);
     const [error, setError] = useState("");
 
