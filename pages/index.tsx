@@ -24,31 +24,39 @@ export default function Home() {
             .catch((err) => setError(err.message));
     }, []);
 
-    if (error) return <p>Error: {error}</p>;
-    if (children.length === 0) return <p>Loading...</p>;
+    if (error) return <Typography color="error">{error}</Typography>;
+    if (children.length === 0) return <Typography>Loading...</Typography>;
 
     return (
-        <Box sx={{ textAlign: "center", mt: 4 }}>
+        <Box sx={{ textAlign: "center", mt: 4, p: 3 }}>
             <Typography variant="h4" gutterBottom>
                 Donate To Your Star ⭐ Child
             </Typography>
 
-            <Link href="/add-child">
-                <Button variant="contained" color="primary" sx={{ mb: 2 }}>
-                    Add Child
-                </Button>
-            </Link>
-
             <Carousel>
                 {children.map((child) => (
-                    <Card key={child.id} sx={{ minWidth: 275, textAlign: "center", p: 2 }}>
-                        <CardContent>
+                    <Card key={child.id} sx={{ minWidth: 275, p: 2, m: 1 }}>
+                        <CardContent sx={{ p: 2 }}>
                             <Typography variant="h5">{child.name}</Typography>
                             <Typography variant="body2">ID: {child.id}</Typography>
                         </CardContent>
                     </Card>
                 ))}
             </Carousel>
+
+            <Box sx={{ mt: 18 }}>
+                <Typography variant="h6" gutterBottom>
+                    [Only For Admin]
+                </Typography>
+
+                <Box sx={{ mt: 3 }}>
+                    <Link href="/add-child">
+                        <Button variant="contained" color="primary">
+                            Add Child
+                        </Button>
+                    </Link>
+                </Box>
+            </Box>
         </Box>
     );
 }
