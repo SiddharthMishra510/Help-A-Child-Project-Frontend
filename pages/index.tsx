@@ -24,25 +24,28 @@ export default function Home() {
             .catch((err) => setError(err.message));
     }, []);
 
-    if (error) return <Typography color="error">{error}</Typography>;
-    if (children.length === 0) return <Typography>Loading...</Typography>;
-
     return (
         <Box sx={{ textAlign: "center", mt: 4, p: 3 }}>
             <Typography variant="h4" gutterBottom>
                 Donate To Your Star ⭐ Child
             </Typography>
 
-            <Carousel>
-                {children.map((child) => (
-                    <Card key={child.id} sx={{ minWidth: 275, p: 2, m: 1 }}>
-                        <CardContent sx={{ p: 2 }}>
-                            <Typography variant="h5">{child.name}</Typography>
-                            <Typography variant="body2">ID: {child.id}</Typography>
-                        </CardContent>
-                    </Card>
-                ))}
-            </Carousel>
+            {error && <Typography color="error">{error}</Typography>}
+
+            {children.length === 0 && !error && <Typography>Loading...</Typography>}
+
+            {children.length > 0 && (
+                <Carousel>
+                    {children.map((child) => (
+                        <Card key={child.id} sx={{ minWidth: 275, p: 2, m: 1 }}>
+                            <CardContent sx={{ p: 2 }}>
+                                <Typography variant="h5">{child.name}</Typography>
+                                <Typography variant="body2">ID: {child.id}</Typography>
+                            </CardContent>
+                        </Card>
+                    ))}
+                </Carousel>
+            )}
 
             <Box sx={{ mt: 18 }}>
                 <Typography variant="h6" gutterBottom>
