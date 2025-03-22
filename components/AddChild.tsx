@@ -5,13 +5,15 @@ import {Child} from "../types/child";
 const AddChild = () => {
     const [id, setId] = useState("");
     const [name, setName] = useState("");
+    const [photo, setPhoto] = useState("");
+    const [careerGoal, setCareerGoal] = useState("");
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
-        const newChild : Child = { id: Number(id), name };
+        const newChild : Child = {id: Number(id), name, photo, careerGoal, amountDonated: 0};
 
         try {
             const response = await fetch("http://localhost:3000/children", {
@@ -60,6 +62,23 @@ const AddChild = () => {
                     sx={{ mb: 2 }}
                     required
                 />
+                <TextField
+                    label="Child Photo (Url)"
+                    fullWidth
+                    value={photo}
+                    onChange={(e) => setPhoto(e.target.value)}
+                    sx={{ mb: 2 }}
+                    required
+                />
+                <TextField
+                    label="Career Goal"
+                    fullWidth
+                    value={careerGoal}
+                    onChange={(e) => setCareerGoal(e.target.value)}
+                    sx={{ mb: 2 }}
+                    required
+                />
+
                 <Button type="submit" variant="contained" color="primary">
                     Add Child
                 </Button>

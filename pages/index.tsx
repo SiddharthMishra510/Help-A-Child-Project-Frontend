@@ -18,6 +18,7 @@ export default function Home() {
             .then((data: Child[]) => {
                 if (data.length > 0) {
                     setChildren(data);
+                    data.forEach(child => console.log("Child:", child));
                 } else {
                     setError("No children found.");
                 }
@@ -42,6 +43,14 @@ export default function Home() {
                             <CardContent sx={{ p: 2 }}>
                                 <Typography variant="h5">{child.name}</Typography>
                                 <Typography variant="body2">ID: {child.id}</Typography>
+                                <img
+                                    src={child.photo}
+                                    alt={child.name}
+                                    onError={(e) => (e.currentTarget.src = "https://picsum.photos/seed/picsum/200/300")}
+                                    style={{ maxWidth: "50%", height: "auto", borderRadius: "8px" }}
+                                />
+                                <Typography variant="body2">Career Goal: {child.careerGoal}</Typography>
+                                <Typography variant="body2">Amount Donated: {child.amountDonated}</Typography>
                             </CardContent>
                         </Card>
                     ))}
