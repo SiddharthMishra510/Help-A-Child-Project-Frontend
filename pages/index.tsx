@@ -38,7 +38,7 @@ export default function Home() {
             {children.length > 0 && (
                 <Carousel>
                     {children.map((child) => (
-                        <Card key={child.id} sx={{ minWidth: 275, p: 2, m: 1, mb: 4 }}>
+                        <Card key={child.id} sx={{ minWidth: 275, p: 2, m: 1}}>
                             <CardContent sx={{ p: 2 }}>
                                 <Typography variant="h5">{child.name}</Typography>
                                 <img

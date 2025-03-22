@@ -15,7 +15,7 @@ const Carousel: React.FC<CarouselProps> = ({ children }) => {
             <Swiper pagination={{ clickable: true }} modules={[Pagination]} loop>
                 {children.map((child, index) => (
                     <SwiperSlide key={index}>
-                        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: 300 }}>
+                        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", height: 450 }}>
                             {child}
                         </Box>
                     </SwiperSlide>
