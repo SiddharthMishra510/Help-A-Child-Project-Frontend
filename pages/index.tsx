@@ -59,13 +59,12 @@ export default function Home() {
                 <Typography variant="h6" gutterBottom>
                     [Only For Admin]
                 </Typography>
-
-                <Box sx={{ mt: 3 }}>
+                <Box sx={{ mt: 3, display: "flex", flexDirection: "column", gap: 2 }}>
                     <Link href="/add-child">
-                        <Button variant="contained" color="primary">
-                            Add Child
-                        </Button>
+                        <Button variant="contained" color="primary">Add Child</Button>
                     </Link>
+                </Box>
+                <Box sx={{ alignSelf: "flex-start" }}>
                     <DeleteAllButton onDelete={() => console.log("Children deleted")} />
                 </Box>
             </Box>
