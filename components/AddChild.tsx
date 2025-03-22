@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Box, TextField, Button, Typography } from "@mui/material";
-import {Child} from "../types/child";
 
 const AddChild = () => {
     const [name, setName] = useState("");
@@ -12,7 +11,7 @@ const AddChild = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
-        const newChild : Child = {name, photo, careerGoal, amountDonated: 0};
+        const newChild = {name, photo, careerGoal, amountDonated: 0};
 
         try {
             const response = await fetch("http://localhost:3000/children", {

@@ -48,6 +48,7 @@ export default function Home() {
                                     style={{ maxWidth: "50%", height: "auto", borderRadius: "8px" }}
                                 />
                                 <Typography variant="body2">Career Goal: {child.careerGoal}</Typography>
+                                <Typography variant="body2">id: {child.id}</Typography>
                                 <Typography variant="body2">Amount Donated: {child.amountDonated}</Typography>
                             </CardContent>
                         </Card>
