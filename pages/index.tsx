@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Box, Typography, Card, CardContent, Button } from "@mui/material";
 import Carousel from "../components/Carousel";
 import { Child } from "../types/child";
+import DeleteAllButton from "../components/DeleteAllButton";
 
 export default function Home() {
     const [children, setChildren] = useState<Child[]>([]);
@@ -58,8 +59,10 @@ export default function Home() {
                             Add Child
                         </Button>
                     </Link>
+                    <DeleteAllButton onDelete={() => console.log("Children deleted")} />
                 </Box>
             </Box>
+
         </Box>
     );
 }
