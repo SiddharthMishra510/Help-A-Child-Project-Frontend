@@ -18,7 +18,6 @@ export default function Home() {
             .then((data: Child[]) => {
                 if (data.length > 0) {
                     setChildren(data);
-                    data.forEach(child => console.log("Child:", child));
                 } else {
                     setError("No children found.");
                 }
