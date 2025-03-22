@@ -3,7 +3,6 @@ import { Box, TextField, Button, Typography } from "@mui/material";
 import {Child} from "../types/child";
 
 const AddChild = () => {
-    const [id, setId] = useState("");
     const [name, setName] = useState("");
     const [photo, setPhoto] = useState("");
     const [careerGoal, setCareerGoal] = useState("");
@@ -13,7 +12,7 @@ const AddChild = () => {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
-        const newChild : Child = {id: Number(id), name, photo, careerGoal, amountDonated: 0};
+        const newChild : Child = {name, photo, careerGoal, amountDonated: 0};
 
         try {
             const response = await fetch("http://localhost:3000/children", {
@@ -32,7 +31,6 @@ const AddChild = () => {
 
             setMessage(`Child "${name}" added successfully!`);
             setError("");
-            setId("");
             setName("");
         } catch (err: any) {
             setError(err.message);
@@ -45,15 +43,6 @@ const AddChild = () => {
             <Typography variant="h5" gutterBottom>Add a New Child</Typography>
 
             <form onSubmit={handleSubmit}>
-                <TextField
-                    label="Child ID"
-                    type="number"
-                    fullWidth
-                    value={id}
-                    onChange={(e) => setId(e.target.value)}
-                    sx={{ mb: 2 }}
-                    required
-                />
                 <TextField
                     label="Child Name"
                     fullWidth

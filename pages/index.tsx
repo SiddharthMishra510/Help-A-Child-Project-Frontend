@@ -42,7 +42,6 @@ export default function Home() {
                         <Card key={child.id} sx={{ minWidth: 275, p: 2, m: 1, mb: 4 }}>
                             <CardContent sx={{ p: 2 }}>
                                 <Typography variant="h5">{child.name}</Typography>
-                                <Typography variant="body2">ID: {child.id}</Typography>
                                 <img
                                     src={child.photo}
                                     alt={child.name}
