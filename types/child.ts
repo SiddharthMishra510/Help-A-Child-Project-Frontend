@@ -4,4 +4,5 @@ export interface Child {
     photo: string;
     careerGoal: string;
     amountDonated: number;
+    donationRequired: number;
 }

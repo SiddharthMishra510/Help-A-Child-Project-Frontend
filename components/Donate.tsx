@@ -1,22 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, TextField, Button, Typography } from "@mui/material";
+import { Child } from "../types/child";
 
 interface DonateProps {
     childId: string;
 }
 
 const Donate: React.FC<DonateProps> = ({ childId }) => {
-    const [amount, setAmount] = useState(0);
-    const [message, setMessage] = useState("");
-    const [error, setError] = useState("");
+    const [amount, setAmount] = useState<number>(0);
+    const [message, setMessage] = useState<string>("");
+    const [error, setError] = useState<string>("");
+    const [child, setChild] = useState<Child | null>(null);
+
+    useEffect(() => {
+        const fetchChild = async () => {
+            try {
+                const response = await fetch(`http://localhost:3000/children/${childId}`);
+                if (!response.ok) {
+                    setError("Failed to fetch child");
+                }
+                const childData: Child = await response.json();
+                setChild(childData);
+            } catch (err: any) {
+                setError(err.message);
+            }
+        };
+
+        fetchChild();
+    }, [childId]);
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
+        if (!child) {
+            setError("Child data is not loaded.");
+            return;
+        }
+
         try {
             const response = await fetch(`http://localhost:3000/children/${childId}/donate`, {
                 method: "PUT",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/json"},
                 body: JSON.stringify({ amount }),
             });
 
@@ -28,7 +52,9 @@ const Donate: React.FC<DonateProps> = ({ childId }) => {
                 return;
             }
 
-            setMessage(`Donation "${amount}" added successfully!`);
+            setChild((prevChild) => prevChild ? { ...prevChild, amountDonated: prevChild.amountDonated + amount } : null);
+
+            setMessage(`Donation of "${amount}" added successfully!`);
             setError("");
             setAmount(0);
         } catch (err: any) {
@@ -46,7 +72,7 @@ const Donate: React.FC<DonateProps> = ({ childId }) => {
                     label="Donation Amount"
                     fullWidth
                     value={amount}
-                    onChange={(e) => setAmount(Number(e.target.value))}
+                    onChange={(e) => setAmount(parseFloat(e.target.value) || 0)}
                     sx={{ mb: 2 }}
                     required
                 />
@@ -57,6 +83,10 @@ const Donate: React.FC<DonateProps> = ({ childId }) => {
 
             {message && <Typography sx={{ mt: 2, color: "green" }}>{message}</Typography>}
             {error && <Typography sx={{ mt: 2, color: "red" }}>{error}</Typography>}
+
+            {child && child.amountDonated >= child.donationRequired && (
+                <Typography sx={{ mt: 2, color: "green" }}>🎉 Congrats! Donation goal reached! 🎉</Typography>
+            )}
         </Box>
     );
 };

@@ -49,6 +49,7 @@ export default function Home() {
                                 />
                                 <Typography variant="body2">Career Goal: {child.careerGoal}</Typography>
                                 <Typography variant="body2">id: {child.id}</Typography>
+                                <Typography variant="body2">Donation Required: {child.donationRequired}</Typography>
                                 <Typography variant="body2">Amount Donated: {child.amountDonated}</Typography>
                                 <Link href={`/donate?childId=${child.id}`} passHref>
                                     <Button
