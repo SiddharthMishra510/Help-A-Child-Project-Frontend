@@ -31,6 +31,8 @@ const AddChild = () => {
             setMessage(`Child "${name}" added successfully!`);
             setError("");
             setName("");
+            setPhoto("");
+            setCareerGoal("");
         } catch (err: any) {
             setError(err.message);
             setMessage("");
