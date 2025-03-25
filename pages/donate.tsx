@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React from "react";
-import Donate from "../components/Donate";
+import DonateForm from "../components/DonateForm";
 import Link from "next/link";
 import { Button, Box, Typography } from "@mui/material";
 
@@ -19,7 +19,7 @@ const DonationPage = () => {
                     Back to Home
                 </Button>
             </Link>
-            <Donate childId={childId} />
+            <DonateForm childId={childId} />
         </Box>
     );
 };

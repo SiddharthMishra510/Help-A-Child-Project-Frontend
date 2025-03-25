@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, TextField, Button, Typography } from "@mui/material";
 
-const AddChild = () => {
+const AddChildForm = () => {
     const [name, setName] = useState("");
     const [photo, setPhoto] = useState("");
     const [careerGoal, setCareerGoal] = useState("");
@@ -81,4 +81,4 @@ const AddChild = () => {
     );
 };
 
-export default AddChild;
+export default AddChildForm;

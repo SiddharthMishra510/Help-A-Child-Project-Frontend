@@ -1,5 +1,5 @@
 import React from "react";
-import AddChild from "../components/AddChild";
+import AddChildForm from "../components/AddChildForm";
 import Link from "next/link";
 import { Button, Box } from "@mui/material";
 
@@ -11,7 +11,7 @@ const AddChildPage = () => {
                     Back to Home
                 </Button>
             </Link>
-            <AddChild />
+            <AddChildForm />
         </Box>
     );
 };

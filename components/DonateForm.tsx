@@ -6,7 +6,7 @@ interface DonateProps {
     childId: string;
 }
 
-const Donate: React.FC<DonateProps> = ({ childId }) => {
+const DonateForm: React.FC<DonateProps> = ({ childId }) => {
     const [amount, setAmount] = useState<number>(0);
     const [message, setMessage] = useState<string>("");
     const [error, setError] = useState<string>("");
@@ -92,4 +92,4 @@ const Donate: React.FC<DonateProps> = ({ childId }) => {
     );
 };
 
-export default Donate;
+export default DonateForm;
