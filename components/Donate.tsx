@@ -18,6 +18,7 @@ const Donate: React.FC<DonateProps> = ({ childId }) => {
                 const response = await fetch(`http://localhost:3000/children/${childId}`);
                 if (!response.ok) {
                     setError("Failed to fetch child");
+                    return;
                 }
                 const childData: Child = await response.json();
                 setChild(childData);
