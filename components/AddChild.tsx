@@ -14,9 +14,10 @@ const AddChild = () => {
         const newChild = {name, photo, careerGoal, amountDonated: 0};
 
         try {
+            const token = localStorage.getItem('token');
             const response = await fetch("http://localhost:3000/children", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}`},
                 body: JSON.stringify(newChild),
             });
 
