@@ -5,11 +5,13 @@ import { Box, Typography, Card, CardContent, Button } from "@mui/material";
 import Carousel from "../components/Carousel";
 import { Child } from "../types/child";
 import DeleteAllButton from "../components/DeleteAllButton";
+import SearchBar from "../components/SearchBar";
 
 export default function Home() {
     const [children, setChildren] = useState<Child[]>([]);
     const [error, setError] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [searchTerm, setSearchTerm] = useState("");
     const router = useRouter();
 
     const handleLogout = () => {
@@ -18,9 +20,19 @@ export default function Home() {
         router.push("/");
     };
 
+    const handleSearch = (query: string) => {
+        setSearchTerm(query);
+        // TODO: Query backend for search term for 'name' field
+        console.log("Searching for:", query);
+    };
+
     useEffect(() => {
         const token = localStorage.getItem("token");
         setIsLoggedIn(!!token);
+
+        // TODO: Make this conditional in the sense that:
+        // If Searchterm, then fetch get children for searchterm Name
+        // Else fetch get all children
 
         fetch(`http://localhost:3000/children`)
             .then((res): Promise<Child[]> => {
@@ -35,7 +47,7 @@ export default function Home() {
                 }
             })
             .catch((err) => setError(err.message));
-    }, []);
+    }, []); // TODO: Add Search term in the watchlist for this useEffect
 
     return (
         <Box sx={{ textAlign: "center", mt: 4, p: 3 }}>
@@ -44,6 +56,12 @@ export default function Home() {
             </Typography>
 
             {error && <Typography color="error">{error}</Typography>}
+
+            <>
+                <h1>Search</h1>
+                <SearchBar onSearch={handleSearch} />
+                {searchTerm && <p>Results for: {searchTerm}</p>}
+            </>
 
             {children.length === 0 && !error && <Typography>Loading...</Typography>}
 
