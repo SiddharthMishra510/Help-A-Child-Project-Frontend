@@ -1,12 +1,47 @@
-I am making something really basic. A website where you can track support for underpriviledged children and see what they aspire to do, what their interests are, etc and donate if you feel like.
-So essentially it'd have a list of children on the server with info and then you can donate for them.# Task-Management-project
+# Help A Child - Frontend 🌟
 
-I want to learn TS/node. I want to create a backend project (and will later create a minimal frontend). 
-Preferably using a non-relational database. Hence, I am creating this project.
+This is the **frontend** for the *Help A Child* project, a platform to **track and support underprivileged children** by viewing their aspirations, interests, and donation needs. Users can **donate to children in need**, while admins have additional management privileges.
 
-📌 Features of the Task Management API
-✅ User authentication (register, login, JWT-based auth)
-✅ Create, update, delete tasks
-✅ Assign tasks to users
-✅ Task status updates (Pending, In Progress, Completed)
-✅ Retrieve tasks (by user, by status, etc.)
+Note: This is the frontend repo. It would only work properly when deployed alongside the backend repo:  [Help-A-Child-Backend](https://github.com/SiddharthMishra510/Help-A-Child-Project-Backend).
+
+## 🚀 Features
+
+✅ View a **list of children** along with their donation requirements  
+✅ **Donate** to support a child’s future  
+✅ **Admin-only**: Add and remove children
+
+## 🛠 Tech Stack
+
+- **Frontend**: Next.js (React)
+- **UI**: Material-UI
+
+- **Backend ([Help-A-Child-Backend](https://github.com/SiddharthMishra510/Help-A-Child-Project-Backend))**: NestJS, PostgreSQL (with Drizzle ORM)
+- **Authentication**: JWT-based authentication
+
+## 🔧 Setup & Installation
+
+### 1️⃣ Clone the repository
+```sh
+git clone https://github.com/[YOUR_USERNAME]/Help-A-Child-Project-Frontend.git
+cd help-a-child
+```
+
+### 2️⃣ Install dependencies
+```sh
+npm install
+```
+
+### 4️⃣ Run the application
+
+- **Frontend** (Next.js):
+  ```sh
+  npm run dev
+  ```
+  This runs the app on **port 3005**. Feel free to update it in package.json.
+
+## 🎯 Contributing
+
+Contributions are welcome! Feel free to open **issues** and **pull requests**.
+
+---
+
