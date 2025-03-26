@@ -1,0 +1,33 @@
+Iteration 0
+
+- create a search bar
+- assume search is by name
+- filter children 'by-name' based on the search query
+- When search is cleared through clearing of the search bar manually, refresh the page (to default)
+- filter out the carousel to only list the children fitting the search
+
+Iteration 1
+
+- send a backend query assuming it is for 'by-name' for all children for that name
+- When search is cleared through a button, refresh the page (to default)
+- Only execute the search for when 'Enter' is pressed when search bar is focused
+- If there are no results, then show "no results" in UI
+
+Iteration 2
+
+- DON'T assume search is by name, instead
+- Manually enlist all fields on the backend database (that can be searched upon) on the frontend dropdown
+- add this dropdown next to the search bar and let user select a search parameter (default to name)
+
+Iteration 3
+
+- DON'T manually enlist all fields on the backend database (that can be searched upon) on the frontend dropdown, instead
+- Fetch to enlist all fields on the backend database (that can be searched upon) on the frontend dropdown
+
+Iteration 4
+
+- Don't search based on search parameters, instead just do global search on all fields of the children database
+
+Iteration 5
+
+- Use concepts like levenshtein distance to allow for typos in search
