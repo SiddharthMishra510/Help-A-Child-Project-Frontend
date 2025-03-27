@@ -16,7 +16,7 @@ Note: This is the frontend repo. It would only work properly when deployed along
 - **UI**: Material-UI
 
 - **Backend ([Help-A-Child-Backend](https://github.com/SiddharthMishra510/Help-A-Child-Project-Backend))**: NestJS, PostgreSQL (with Drizzle ORM)
-- **Authentication**: JWT-based authentication
+- **Auth**: JWT-based auth
 
 ## 🔧 Setup & Installation
 
