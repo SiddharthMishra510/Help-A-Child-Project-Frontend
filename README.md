@@ -39,9 +39,10 @@ npm install
   ```
   This runs the app on **port 3005**. Feel free to update it in package.json.
 
-## 🎯 Contributing
+## 🎯 Images
 
-Contributions are welcome! Feel free to open **issues** and **pull requests**.
+![Home Page](https://github.com/user-attachments/assets/34b486d0-86aa-4b08-ba4e-5e30cf9368b7)
 
----
+![Donation Page](https://github.com/user-attachments/assets/57a0c7c8-46a6-4315-8983-02d53db3706f)
 
+![Login Page](https://github.com/user-attachments/assets/71d4f2ce-5131-4ecd-80de-9c9488cad83a)
