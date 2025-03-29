@@ -66,7 +66,7 @@ const DonateForm: React.FC<DonateProps> = ({ childId }) => {
 
     return (
         <Box sx={{ maxWidth: 400, mx: "auto", mt: 4, textAlign: "center" }}>
-            <Typography variant="h5" gutterBottom>Donate</Typography>
+            <Typography variant="h5" gutterBottom> {child ? `Donating to ${child.name}` : "Donate"} </Typography>
 
             <form onSubmit={handleSubmit}>
                 <TextField
