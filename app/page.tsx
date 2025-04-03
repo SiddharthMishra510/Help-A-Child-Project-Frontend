@@ -1,6 +1,7 @@
+"use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Box, Typography, Card, CardContent, Button } from "@mui/material";
 import Carousel from "../components/Carousel";
 import { Child } from "../types/child";
